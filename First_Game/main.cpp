@@ -9,6 +9,22 @@ using namespace sf;
 
 int main()
 {
+	class Bullet {
+	public:
+		sf::CircleShape shape;
+		sf::Vector2f velocity;
+
+		Bullet(float radius = 5.f) {
+			shape.setRadius(radius);
+			shape.setFillColor(sf::Color::Red);
+		}
+
+		void update() {
+			shape.move(velocity);
+		}
+	};
+
+
 	ContextSettings set;
 
 	RenderWindow window(VideoMode(800, 600), "Game", Style::Default, set);
@@ -50,6 +66,14 @@ int main()
 
 	player1flames.setPosition(bounds.width / 2, bounds.height / 2);
 	float offsetDistance = 100.f;
+
+	vector<Bullet> bullets;
+
+	// Set bullet speed
+	float bulletSpeed = -5.0f;
+	float bulletCooldown = 0.5f; // Time in seconds between bullets
+	float timeSinceLastShot = 0.0f;
+
 	while (window.isOpen()) {
 		;
 		Event event1;
@@ -95,36 +119,43 @@ int main()
 		Vector2f Cposition = player1ship.getPosition();
 
 
+		//bullets
+		float deltaTimebullet = clock.restart().asSeconds();
+		timeSinceLastShot += deltaTimebullet;
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && timeSinceLastShot >= bulletCooldown) {
+			Bullet bullet;
+			bullet.shape.setPosition(player1ship.getPosition().x + player1ship.getScale().x / 2 - bullet.shape.getRadius(), player1ship.getPosition().y);
+			bullet.velocity = sf::Vector2f(0.0f, bulletSpeed);
+			bullets.push_back(bullet);
+
+			timeSinceLastShot = 0.0f; // Reset cooldown timer
+		}
+		for (auto& bullet : bullets) {
+			bullet.update();
+		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 			showflame = true;
 			acceleration.y -= cos(angleRadians)*accelerationRate;
 			acceleration.x = sin(angleRadians) * accelerationRate;
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 			if (velocity.x != 0) {
-				sleep(sf::milliseconds(1));
-				velocity.x--;
-
-			}
-			else {
 				velocity.x = 0;
-			}
-			if (velocity.y != 0) {
-				sleep(sf::milliseconds(1));
-				velocity.y--;
 
 			}
-			else {
-				velocity.y = 0;
+		
+			if (velocity.y != 0) {
+				velocity.y=0;
 			}
 		}
 		
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-			player1ship.rotate(-0.1);
+			player1ship.rotate(-0.3);
 			
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-			player1ship.rotate(0.1);
+			player1ship.rotate(0.3);
 			
 		}
 		velocity += acceleration * deltaTime;
@@ -157,6 +188,9 @@ int main()
 		window.draw(player1ship);
 		if (showflame) {
 			window.draw(player1flames);
+		}
+		for (const auto& bullet : bullets) {
+			window.draw(bullet.shape);
 		}
 		window.display();
 	}
