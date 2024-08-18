@@ -3,42 +3,32 @@
 #include<iostream>
 #include <chrono>
 #include <thread>
+
 using namespace std;
 using namespace sf;
 
 
 int main()
 {
-	class Bullet {
-	public:
-		sf::CircleShape shape;
-		sf::Vector2f velocity;
-
-		Bullet(float radius = 5.f) {
-			shape.setRadius(radius);
-			shape.setFillColor(sf::Color::Red);
-		}
-
-		void update() {
-			shape.move(velocity);
-		}
-	};
 
 
 	ContextSettings set;
 
-	RenderWindow window(VideoMode(800, 600), "Game", Style::Default, set);
+	RenderWindow window(VideoMode(1200, 800), "Game", Style::Default, set);
 
 	set.antialiasingLevel = 8;
+
 	Texture player1text;
 	Texture player1flame;
+	Texture bullet_texture;
 
 	player1text.loadFromFile("Assets/texture/ship.png");
 	player1flame.loadFromFile("Assets/texture/flameSS.png");
+	bullet_texture.loadFromFile("Assets/texture/bult.png");
+	
 
 	Sprite player1flames(player1flame);
 	Sprite player1ship(player1text);
-
 	FloatRect bounds = player1ship.getLocalBounds();
 
 	// Set the origin to the center of the sprite
@@ -67,12 +57,14 @@ int main()
 	player1flames.setPosition(bounds.width / 2, bounds.height / 2);
 	float offsetDistance = 100.f;
 
-	vector<Bullet> bullets;
 
-	// Set bullet speed
-	float bulletSpeed = -5.0f;
-	float bulletCooldown = 0.5f; // Time in seconds between bullets
-	float timeSinceLastShot = 0.0f;
+
+	// make a bullet system that shoots bullet from the ship
+	vector<Sprite> bullets;
+	Clock bullet_clock;
+	Time timeBetweenShots = sf::seconds(0.3f);  // Time delay between shots
+	Time lastShotTime = sf::Time::Zero;
+	
 
 	while (window.isOpen()) {
 		;
@@ -116,24 +108,8 @@ int main()
 		player1flames.setPosition(flamePosition);
 		player1flames.setRotation(player1ship.getRotation());
 		
-		Vector2f Cposition = player1ship.getPosition();
+		Vector2f C_position = player1ship.getPosition();
 
-
-		//bullets
-		float deltaTimebullet = clock.restart().asSeconds();
-		timeSinceLastShot += deltaTimebullet;
-
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && timeSinceLastShot >= bulletCooldown) {
-			Bullet bullet;
-			bullet.shape.setPosition(player1ship.getPosition().x + player1ship.getScale().x / 2 - bullet.shape.getRadius(), player1ship.getPosition().y);
-			bullet.velocity = sf::Vector2f(0.0f, bulletSpeed);
-			bullets.push_back(bullet);
-
-			timeSinceLastShot = 0.0f; // Reset cooldown timer
-		}
-		for (auto& bullet : bullets) {
-			bullet.update();
-		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 			showflame = true;
 			acceleration.y -= cos(angleRadians)*accelerationRate;
@@ -184,14 +160,42 @@ int main()
 		position += velocity * deltaTime;
 		player1ship.setPosition(position);
 
+		sf::Time currentTime = bullet_clock.getElapsedTime();
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && currentTime - lastShotTime > timeBetweenShots) {
+			sf::Sprite bullet(bullet_texture);
+			float bullet_angle = player1ship.getRotation();
+			bullet.setRotation(bullet_angle);
+			bullet.setOrigin(bullet.getGlobalBounds().width / 2, bullet.getGlobalBounds().height / 2);
+
+			// Position bullet at the center-top of the spaceship
+			bullet.setPosition(player1ship.getPosition().x ,player1ship.getPosition().y);
+
+			bullets.push_back(bullet);
+			lastShotTime = currentTime;
+		}
+
+		// Update bullets
+		float ship_angle = player1ship.getRotation();
+		float bullet_x = sin(ship_angle * 3.14159 / 180) * 5;
+		float bullet_y = -cos(ship_angle * 3.14159 / 180) * 5;
+		for (auto& bullet : bullets) {
+			bullet.move(bullet_x*0.5,bullet_y*0.5);  // Move bullet upwards
+		}
+
+		// Remove bullets that are off the screen
+		bullets.erase(std::remove_if(bullets.begin(), bullets.end(),
+			[&](const sf::Sprite& bullet) { return bullet.getPosition().y + bullet.getGlobalBounds().height < 0; }), bullets.end());
+
+
 		window.clear(Color::Blue);
 		window.draw(player1ship);
 		if (showflame) {
 			window.draw(player1flames);
 		}
 		for (const auto& bullet : bullets) {
-			window.draw(bullet.shape);
+			window.draw(bullet);
 		}
+
 		window.display();
 	}
 }
