@@ -1,25 +1,39 @@
 ﻿  main.cpp
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(40,72): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(40,72): warning C4244:         with
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(40,72): warning C4244:         [
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(40,72): warning C4244:             T=unsigned int
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(40,72): warning C4244:         ]
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(40,48): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(40,48): warning C4244:         with
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(40,48): warning C4244:         [
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(40,48): warning C4244:             T=unsigned int
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(40,48): warning C4244:         ]
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(45,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(45,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(123,32): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(126,32): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(163,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(164,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(166,50): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(166,34): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(176,21): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(176,21): warning C4244:         with
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(176,21): warning C4244:         [
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(176,21): warning C4244:             T=unsigned int
-C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(176,21): warning C4244:         ]
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(49,58): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(49,58): warning C4244:         with
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(49,58): warning C4244:         [
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(49,58): warning C4244:             T=unsigned int
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(49,58): warning C4244:         ]
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(49,41): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(49,41): warning C4244:         with
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(49,41): warning C4244:         [
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(49,41): warning C4244:             T=unsigned int
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(49,41): warning C4244:         ]
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(59,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(59,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(157,32): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(161,32): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(200,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(201,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(204,50): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(204,34): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(215,21): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(215,21): warning C4244:         with
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(215,21): warning C4244:         [
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(215,21): warning C4244:             T=unsigned int
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(215,21): warning C4244:         ]
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(218,36): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(218,31): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(229,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(229,34): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(230,67): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(230,67): warning C4244:         with
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(230,67): warning C4244:         [
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(230,67): warning C4244:             T=unsigned int
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(230,67): warning C4244:         ]
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(230,44): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(230,44): warning C4244:         with
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(230,44): warning C4244:         [
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(230,44): warning C4244:             T=unsigned int
+C:\Users\Admin\Desktop\First_Game\First_Game\main.cpp(230,44): warning C4244:         ]
   First_Game.vcxproj -> C:\Users\Admin\Desktop\First_Game\x64\Debug\First_Game.exe
